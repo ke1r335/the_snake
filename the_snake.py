@@ -60,7 +60,7 @@ class GameObject:
 class Apple(GameObject):
     """Класс для представления яблока в игре."""
 
-    def __init__(self, screen_width=SCREEN_WIDTH, screen_height=SCREEN_HEIGHT, 
+    def __init__(self, screen_width=SCREEN_WIDTH, screen_height=SCREEN_HEIGHT,
                  cell_size=GRID_SIZE):
         """
         Инициализируем яблоко.
