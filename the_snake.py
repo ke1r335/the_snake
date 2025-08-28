@@ -59,14 +59,14 @@ class GameObject:
     def draw(self):
         """Метод для отрисовки объекта."""
         raise NotImplementedError(
-            "Метод draw должен быть реализован в дочерних классах"
+            'Метод draw должен быть реализован в дочерних классах'
         )
 
 
 class Apple(GameObject):
     """Класс для представления яблока в игре."""
 
-    def __init__(self, color, occupied_positions=(CENTER_POSITION)):
+    def __init__(self, color, occupied_positions=(CENTER_POSITION,)):
         """
         Инициализация яблока.
 
@@ -212,5 +212,5 @@ def main():
         pygame.display.update()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
