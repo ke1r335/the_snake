@@ -46,14 +46,12 @@ class GameObject:
     """Базовый класс для всех игровых объектов."""
 
     def __init__(self):
-        """
-        Инициализация игрового объекта.
-        """
+        """Инициализация игрового объекта."""
         self.position = CENTER_POSITION
         self.body_color = None
 
     def draw(self):
-        """Метод для отрисовки объекта."""
+        """Отрисовка объекта."""
         raise NotImplementedError(
             'Метод draw должен быть реализован в дочерних классах'
         )
@@ -63,12 +61,7 @@ class Apple(GameObject):
     """Класс для представления яблока в игре."""
 
     def __init__(self, occupied_positions=(CENTER_POSITION,)):
-        """
-        Инициализация яблока.
-
-        Args:
-            occupied_positions (tuple): Занятые позиции на игровом поле
-        """
+        """Инициализация яблока."""
         super().__init__()
         self.body_color = APPLE_COLOR
         self.randomize_position(occupied_positions)
@@ -99,9 +92,7 @@ class Snake(GameObject):
     """Класс для представления змейки в игре."""
 
     def __init__(self):
-        """
-        Инициализация змейки.
-        """
+        """Инициализация змейки."""
         super().__init__()
         self.body_color = SNAKE_COLOR
         self.positions = [self.position]
@@ -110,7 +101,7 @@ class Snake(GameObject):
         self.length = 1
 
     def update_direction(self):
-        """Обновляет направление движения змейки на следующее."""
+        """Обновляет направление движения змейки."""
         if self.next_direction:
             self.direction = self.next_direction
             self.next_direction = None
@@ -170,7 +161,7 @@ def handle_keys(snake):
 
 
 def main():
-    """Основная функция игры, содержащая главный игровой цикл."""
+    """Основная функция игры с главным игровым циклом."""
     pygame.init()
 
     snake = Snake()
