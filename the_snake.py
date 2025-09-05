@@ -52,7 +52,7 @@ class GameObject:
             color (tuple): Цвет объекта (RGB)
         """
         self.body_color = color
-        self.position = CENTER_POSITION  # position - внутренний атрибут
+        self.position = CENTER_POSITION  
 
     def draw(self):
         """Отрисовка объекта."""
@@ -126,7 +126,7 @@ class Snake(GameObject):
             (y + dy * GRID_SIZE) % SCREEN_HEIGHT
         )
         self.positions.insert(0, new_head)
-        self.position = new_head  # обновляем position
+        self.position = new_head
 
         if len(self.positions) > self.length:
             self.positions.pop()
