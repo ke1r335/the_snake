@@ -52,7 +52,7 @@ class GameObject:
             color (tuple): Цвет объекта (RGB)
         """
         self.body_color = color
-        self.position = CENTER_POSITION  
+        self.position = CENTER_POSITION
 
     def draw(self):
         """Отрисовка объекта."""
