@@ -1,5 +1,4 @@
 from random import randint
-
 import pygame
 
 # Константы для размеров поля и сетки:
@@ -45,16 +44,15 @@ clock = pygame.time.Clock()
 class GameObject:
     """Базовый класс для всех игровых объектов."""
 
-    def __init__(self, color=None, position=CENTER_POSITION):
+    def __init__(self, color=None):
         """
         Инициализация игрового объекта.
 
         Args:
             color (tuple): Цвет объекта (RGB)
-            position (tuple): Начальная позиция объекта (x, y)
         """
-        self.position = position
         self.body_color = color
+        self.position = CENTER_POSITION  # position - внутренний атрибут
 
     def draw(self):
         """Отрисовка объекта."""
@@ -66,17 +64,14 @@ class GameObject:
 class Apple(GameObject):
     """Класс для представления яблока в игре."""
 
-    def __init__(self, color=APPLE_COLOR,
-                 occupied_positions=(CENTER_POSITION,)):
+    def __init__(self, color=APPLE_COLOR):
         """
         Инициализация яблока.
 
         Args:
             color (tuple): Цвет яблока (RGB)
-            occupied_positions (tuple): Занятые позиции на игровом поле
         """
         super().__init__(color=color)
-        self.randomize_position(occupied_positions)
 
     def randomize_position(self, occupied_positions):
         """Устанавливает случайное положение яблока на игровом поле."""
@@ -131,6 +126,7 @@ class Snake(GameObject):
             (y + dy * GRID_SIZE) % SCREEN_HEIGHT
         )
         self.positions.insert(0, new_head)
+        self.position = new_head  # обновляем position
 
         if len(self.positions) > self.length:
             self.positions.pop()
@@ -141,7 +137,8 @@ class Snake(GameObject):
 
     def reset(self):
         """Сбрасывает змейку в начальное состояние."""
-        self.positions = [CENTER_POSITION]
+        self.position = CENTER_POSITION
+        self.positions = [self.position]
         self.direction = RIGHT
         self.next_direction = None
         self.length = 1
@@ -181,7 +178,7 @@ def main():
     pygame.init()
 
     snake = Snake()
-    apple = Apple(occupied_positions=snake.positions)
+    apple = Apple()
 
     while True:
         clock.tick(SPEED)
